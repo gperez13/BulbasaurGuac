@@ -1,0 +1,25 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+  background: transparent url(../images/main-bg.png) left top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+canvas{
+	position: absolute;
+	left: 25%;
+	top: 25%;
+}
+
+footer{
+	font-size: 12px;
+	position: absolute;
+	bottom: 0;
+	left: 25%;
+}
+
+aside{
+	
+}

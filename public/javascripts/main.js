@@ -1,5 +1,6 @@
 
 
+
 let player;
 let controls = {};
 let playerSpeed = 150;
@@ -64,9 +65,12 @@ function collisionHandler(bullet, enemies){
 	enemies.kill();
 	score += 10;
 	scoreText.text = scoreString + score;
+	$('#scoreboard').text(scoreText.text);
 	if(mewtwo.countLiving() === 0){
 		score += 1000;
 		scoreText.text = scoreString + score;
+		$('#scoreboard').text(scoreText.text);
+
 		pokeCenter = 'Mewtwo is defeated!! \n Do it again?';
 		nurseJoy = this.add.text(150, 150, pokeCenter, {font: '34px Arial', fill: 'white', backgroundColor: 'black', wordWrap: 'true', wordWrapWidth: 550});
 		game.input.onTap.addOnce(gameRestart, this);
@@ -136,7 +140,7 @@ function enemyHitsPlayer(player, bullet){
 			player.kill();
 			psychic.callAll('kill');
 			pokeCenter = 'Bulbasaur has fainted\n Would you like to heal your Pokemon?';
-			nurseJoy = this.add.text(150, 150, pokeCenter, {font: '34px Arial', fill: 'white', backgroundColor: 'black', wordWrap: 'true', wordWrapWidth: 550});
+			nurseJoy = this.add.text(150, 150, pokeCenter, {font: '34px Helvetica', fill: 'white', backgroundColor: 'black', wordWrap: 'true', wordWrapWidth: 550});
 			game.input.onTap.addOnce(gameRestart, this);
 		}
 	}
@@ -157,7 +161,7 @@ function moltresHitsPlayer(player, moltres){
 			player.kill();
 			moltres.kill();
 			pokeCenter = 'Bulbasaur has fainted\n Would you like to heal your Pokemon?';
-			nurseJoy = this.add.text(150, 150, pokeCenter, {font: '34px Arial', fill: 'white', backgroundColor: 'black', wordWrap: 'true', wordWrapWidth: 550});
+			nurseJoy = this.add.text(150, 150, pokeCenter, {font: '34px Helvetica', fill: 'white', backgroundColor: 'black', wordWrap: 'true', wordWrapWidth: 550});
 			game.input.onTap.addOnce(gameRestart, this);
 		}
 	}
@@ -258,13 +262,12 @@ const GameState = {
 
 
 		scoreString = 'Score: ';
-		scoreText = this.add.text(10, 10, scoreString + score, {font: '34px Arial', fill: 'white', backgroundColor: 'black'});
+		scoreText = this.add.text(10, 10000, scoreString + score, {font: '34px Helvetica', fill: 'white', fontStyle: 'italic', opacity: 0.0});
 
 
 		pokeballs = this.add.group();
-		this.add.text(this.world.width - 175, 10, 'Pokeballs: ', { font: '34px Comic-sans', fill: 'red' , backgroundColor: 'black'})
 		for(let i = 0; i <3; i++){
-			let iChooseYou = pokeballs.create(this.world.width - 100 + (30 * i), 75, 'live');
+			let iChooseYou = pokeballs.create(this.world.width - 100 + (30 * i), 40, 'live');
 			iChooseYou.anchor.setTo(0.5, 0.5);
 			iChooseYou.alpha = 0.9;
 			pokeballs.callAll('scale.setTo', 'scale', .1, .1);
